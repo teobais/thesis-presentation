@@ -19,3 +19,7 @@ Then, install dependencies and run the preview server:
 $ npm install && bower install
 $ gulp serve
 ```
+
+## Browsers
+
+The initial implementation is only tested on FF.
