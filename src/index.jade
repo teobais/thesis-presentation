@@ -1,18 +1,13 @@
 doctype html
 html
   head
-    style
-        include styles/style.css
     meta(charset='utf-8')
     meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
     title Thesis
-
     link(rel='stylesheet', type='text/css', href='build/build.css')
 
   body
-
     article
-
       section
         h5 Thesis Project <br>
         h2 Analysis, Design and Implementation of a "Movie  Quiz" game in Android<hr/>
@@ -24,7 +19,6 @@ html
         p <a href="http://arch.icte.uowm.gr">http://arch.icte.uowm.gr</a>
         img(src= "images/icte-logo.jpg", style="width: 15%; position: absolute; top: 0; right: 0; border: 0;")
 
-
       section
         h2 Outline
         aside
@@ -35,8 +29,7 @@ html
           p Conclusions
           p Future Extensions
           p Demo
-          
-          
+                   
       section
         h2 System Introduction
         h3.bullet We wanted a multiplayer game, where:
@@ -63,15 +56,13 @@ html
           li Search by title
           li Search by imdb id
           li XML / JSON
-
-      
+     
       section
         h2 Scrapper - Implementation
         h3.bullet A script that converts a text file containing movie titles to an SQLite database
         img(class="bullet",src="images/scrapper_exec.png", style="width: 75%")
         img(src="images/text-to-sql.png", style="width: 60%")
         
-
       section
         h2.bullet Scrapper - DB schema
         img(class="bullet",src="images/db.png", style="position: absolute; left: 0px; width: 45%;")
@@ -108,7 +99,6 @@ html
         h3 Mockups - Server
         img(src="images/server-mocks.jpg", style="width:100%")
        
-      
       section.emphatic-text(data-bespoke-backdrop='emphatic')
         h2 Requirements Engineering  
         h3 Use Case Diagram - Server
@@ -149,8 +139,6 @@ html
         h3 FSM - Client 
         img(src="images/client-fsm.jpg", style="width:95%")
       
-      
-      
       section
         h2 Protocol Messages
         h3.bullet A typical flow
@@ -184,7 +172,6 @@ html
           code.language-javascript.
             MESSAGE::END_OF_GAME==[PLAYER1]:[SCORE]<>[PLAYERN]:[SCORE]
       
-      
        section
         h2 Design Engineering
         h3 Server Implementation
@@ -215,7 +202,6 @@ html
         h4 Question is simultaneously sent to clients
         img.bullet(src="images/client-gameplay.jpg", style="width:45%")
         
-        
        section
         h2 Key Points of Design
         h3 Android Development
@@ -226,7 +212,6 @@ html
             li Synchronized threads
             li Asynchronous Tasks
             li Custom UI
-        
         
        section.emphatic-text(data-bespoke-backdrop='emphatic')
         h2 ServerSocket establishes connections
@@ -271,7 +256,6 @@ html
         h2 Android part's over...  
         h3 Let's go to the web app
         
-      
       section.emphatic-text(data-bespoke-backdrop='emphatic')
         h2 Requirements Engineering  
         h3 Use Case Diagram - Web Application
@@ -286,7 +270,6 @@ html
         h2 Design Engineering  
         h3 Implementation - Web Application
         img(src="images/webapp.gif", style="width:100%")
-   
 
       section
         h2 Security  
@@ -295,9 +278,7 @@ html
         ul
           li PDO for database handling and productivity
           li Sanitization functions for input filtering
-      
-      
-      
+
       section
         h2 Prototyping
         h3 Mockups - WireframeSketcher
@@ -307,7 +288,6 @@ html
         h2 Debugging
         h3 The embedded logger is unstoppable, irrelevant and snob
         img.bullet(src="images/AS_default_logs.gif", style="width:100%")
-        //img(src="images/debugging.jpg", style="width:125%")
       
       section
         h1 So?
@@ -331,10 +311,10 @@ html
         h2 Quality Assurance  
         h3 Code Metrics - cloc
         img(src="images/cloc3.png", style="width:93%")
-      
-       
+        
       section
         h2 Conclusions 
+        p
         p
         ol
             li An Android app can function as a server, if threads are handled properly.
