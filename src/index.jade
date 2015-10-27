@@ -1,0 +1,359 @@
+doctype html
+html
+  head
+    style
+        include styles/style.css
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
+    title Thesis
+
+    link(rel='stylesheet', type='text/css', href='build/build.css')
+
+  body
+
+    article
+
+      section
+        h5 Thesis Project <br>
+        h2 Analysis, Design and Implementation of a "Movie  Quiz" game in Android<hr/>
+        h3 Thodoris Bais
+        h3 Supervisor: Minas Dasygenis
+        h6 27-10-2015 | ICTE UoWM
+        p
+        h6 Laboratory of Digital Systems and Computer Architecture
+        p <a href="http://arch.icte.uowm.gr">http://arch.icte.uowm.gr</a>
+        img(src= "images/icte-logo.jpg", style="width: 15%; position: absolute; top: 0; right: 0; border: 0;")
+
+
+      section
+        h2 Outline
+        aside
+          p Introduction
+          p Requirements & Design Engineering
+          p Admin's Website Functionality
+          p Quality Assurance
+          p Conclusions
+          p Future Extensions
+          p Demo
+          
+          
+      section
+        h2 System Introduction
+        h3.bullet We wanted a multiplayer game, where:
+        ul
+            li the database could be easily updated
+            li the server could run locally
+            li the game could provide enough configuration options
+            li questions were taken from IMdB
+        <hr/>
+        p.bullet ...following the standards of a modern multiplayer game
+        h2 So, what is the main concept of your thesis?
+      section
+        h2 The problem
+        h3 IMDB Api provides weird-formatted datasets
+        img(src="images/imdb.jpg", style="width: 60%")
+      
+      section
+        h2 The solution
+        img(src="images/api_omdb.jpeg", style="width: 60%")
+        p
+        h3.bullet Features
+        ul
+          li HTTP Requests
+          li Search by title
+          li Search by imdb id
+          li XML / JSON
+
+      
+      section
+        h2 Scrapper - Implementation
+        h3.bullet A script that converts a text file containing movie titles to an SQLite database
+        img(class="bullet",src="images/scrapper_exec.png", style="width: 75%")
+        img(src="images/text-to-sql.png", style="width: 60%")
+        
+
+      section
+        h2.bullet Scrapper - DB schema
+        img(class="bullet",src="images/db.png", style="position: absolute; left: 0px; width: 45%;")
+        img(src="images/db_schema.jpg", style="float: right;  width:30%")
+        
+      section
+        h2 Development Stages
+        h3 Requirements Engineering
+        ul
+          li Database Creation
+          li System Architecture
+          li Mockups
+          li FSM Diagrams
+          li Use Case Diagrams
+          li Sequence Diagrams
+          li Protocol Messages
+          
+      section
+        h2 Development Stages  
+        h3 Design Engineering
+        ul
+          li Android Server Development
+          li Android Client Development
+          li Admin Website Development
+          li Manual Testing
+          
+      section
+        h2 Requirements Engineering  
+        h3 System Architecture
+        img(src="images/system_architecture.jpg", style="width:75%")
+        
+      section
+        h2 Requirements Engineering  
+        h3 Mockups - Server
+        img(src="images/server-mocks.jpg", style="width:100%")
+       
+      
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 Requirements Engineering  
+        h3 Use Case Diagram - Server
+        img(src="images/server-use_case-diag.jpg", style="width:95%")
+        
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 Requirements Engineering  
+        h3 Sequence Case Diagram - Server
+        img(src="images/server-sequence-diagram.jpg", style="width:95%")
+      
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 Requirements Engineering  
+        h3 FSM - Server in Singleplayer Mode
+        img(src="images/server-fsm2.jpg", style="width:95%")
+      
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 Requirements Engineering  
+        h3 FSM - Server in Multiplayer Mode
+        img(src="images/server-fsm1.jpg", style="width:95%")
+        
+      section
+        h2 Requirements Engineering  
+        h3 Mockups - Client
+        img(src="images/client-mocks.jpg", style="width:100%")
+        
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 Requirements Engineering  
+        h3 Use Case Diagram - Client
+        img(src="images/client-use_case_diag.jpg", style="width:77%")
+        
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 Requirements Engineering  
+        h3 Sequence Case Diagram - Client
+        img(src="images/client-sequence-diag.jpg", style="width:95%")
+      
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 Requirements Engineering  
+        h3 FSM - Client 
+        img(src="images/client-fsm.jpg", style="width:95%")
+      
+      
+      
+      section
+        h2 Protocol Messages
+        h3.bullet A typical flow
+        p.bullet ► Client inserts a nickname
+        pre.bullet
+          code.language-javascript.
+            MESSAGE::CONNECTION ACCEPTED
+   
+            NICKNAME::OK
+   
+            CONFIG::gameType<>helpPhoneMode<>helpAudienceMode<>
+            helpHalfMode<>maxAnswerTime<>timeRemaining<>NickName<>
+            correctScore<>informOtherPlayers<>scoreVisible
+
+      section
+        h2 Protocol Messages
+        h3 Continuing the typical flow
+        pre.bullet
+          code.language-javascript.
+            GAME_STARTING
+            
+            NEW_QUESTION::question<>answer1<>answer2<>
+            answer3<>answer4<>
+            answer5<>correct
+            
+        pre.bullet
+          code.language-javascript.
+            NICKNAME::ANSWER::QUESTION
+   
+        pre(style="overflow: hidden;").bullet
+          code.language-javascript.
+            MESSAGE::END_OF_GAME==[PLAYER1]:[SCORE]<>[PLAYERN]:[SCORE]
+      
+      
+       section
+        h2 Design Engineering
+        h3 Server Implementation
+        img(src="images/server-start.jpg", style="width:80%")
+        
+       section
+        h2 So what?
+        h3 Server is now set to listen to incoming connections, so the ball goes to client...
+        
+       section
+        h2 Design Engineering
+        h3 Client Implementation
+        img(src="images/client-start.jpg", style="width:80%")
+        
+       section
+        h2 Time Left? For what?
+        h3 If no error returned, the client is connected and waits for the server to start the game...
+        p.bullet Hey, Mr. server, start the game, I'm in! 
+        //to be converted into markdown code
+        p.bullet ....but wait, how does the server know if players are actually connected?
+        img.bullet(src="images/server-new-player.jpg", style="width:40%")
+        
+       section
+        h4.bullet "Ok, perfect", I've got 2 players, let's start!
+        img.bullet(src="images/server-gameplay.jpg", style="width:45%")
+        
+       section
+        h4 Question is simultaneously sent to clients
+        img.bullet(src="images/client-gameplay.jpg", style="width:45%")
+        
+        
+       section
+        h2 Key Points of Design
+        h3 Android Development
+        ul  
+            li ServerSocket class to establish connections
+            li Send messages using the PrintWriter class
+            li Read messages using the BufferedReader
+            li Synchronized threads
+            li Asynchronous Tasks
+            li Custom UI
+        
+        
+       section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 ServerSocket establishes connections
+        pre
+          code.language-java.
+            @Override
+            public void run() {
+                synchronized(this){
+                    this.runningThread = Thread.currentThread();
+                }
+                // create ServerSocket using specified port
+                serverSocket = new ServerSocket(PortNumber);
+                while (running) {
+                    new ThreadHandler(serverSocket.accept()).start();
+                }
+            }
+            
+      section
+        h2 PrintWriter sends
+        pre
+          code.language-java.
+            private BufferedReader in;
+            in = new BufferedReader(
+                    new InputStreamReader(
+                        socket.getInputStream()
+                    )
+                );
+            
+            /* Sending messages */
+            out.println("MESSAGE::END_OF_GAME=="+scoreMessage);
+      section
+        h2 BufferedReader reads
+        pre
+          code.language-java.
+            private PrintWriter out;
+            out = new PrintWriter(socket.getOutputStream(), true);
+            
+            /* Reading messages */
+            in.readLine();
+      
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 Android part's over...  
+        h3 Let's go to the web app
+        
+      
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 Requirements Engineering  
+        h3 Use Case Diagram - Web Application
+        img(src="images/web-uc-diag.jpg", style="width:80%")
+      
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 Requirements Engineering  
+        h3 Sequence Diagram - Web Application
+        img(src="images/webapp-sequence-diag.jpg", style="width:100%")
+        
+      section
+        h2 Design Engineering  
+        h3 Implementation - Web Application
+        img(src="images/webapp.gif", style="width:100%")
+   
+
+      section
+        h2 Security  
+        h3 has been ensured in the web application, using:
+        br
+        ul
+          li PDO for database handling and productivity
+          li Sanitization functions for input filtering
+      
+      
+      
+      section
+        h2 Prototyping
+        h3 Mockups - WireframeSketcher
+        img(src="images/wfsketcher.jpg", style="width:100%")
+      
+      section
+        h2 Debugging
+        h3 The embedded logger is unstoppable, irrelevant and snob
+        img.bullet(src="images/AS_default_logs.gif", style="width:100%")
+        //img(src="images/debugging.jpg", style="width:125%")
+      
+      section
+        h1 So?
+        
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 Alternative Debugging
+        h3 Android Device Monitor
+        img(src="images/debugging.jpg", style="width:100%")
+      
+      section.emphatic-text(data-bespoke-backdrop='emphatic')
+        h2 Quality Assurance  
+        h3 Task Management - Trello
+        img(src="images/trello.jpg", style="width:125%")
+      
+      section
+        h2 Quality Assurance  
+        h3.bullet Build Tool
+        img.bullet(src="images/gradle.jpg", style="width:80%")
+      
+      section
+        h2 Quality Assurance  
+        h3 Code Metrics - cloc
+        img(src="images/cloc3.png", style="width:93%")
+      
+       
+      section
+        h2 Conclusions 
+        p
+        ol
+            li An Android app can function as a server, if threads are handled properly.
+            li This is about a modular project.
+            li Low maintenance cost in comparison with remote server machines. 
+        
+      section
+        h2 Future Extensions
+        p
+        p
+        p
+        ol
+            li Automated Testing
+            li User Interface
+            li Preparser
+            li Thread/Exception Handling
+       
+      section
+        h2.bullet Thanks!
+        p.bullet Questions?
+      
+    script(src='build/build.js')
