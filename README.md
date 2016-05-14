@@ -19,4 +19,4 @@ $ gulp serve
 
 ## Browsers
 
-The initial implementation is only tested on FF.
+Tested on FF, Chrome.
